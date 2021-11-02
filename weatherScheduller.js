@@ -39,6 +39,8 @@ const schedulingWeather = async (req, res) => {
     await connection.query(updateWeatherQuery(weatherCondition, weatherTemp, weatherComparision));
   } catch(err) {
     return err;
+  } finally {
+    connection.release();
   }
 }
 module.exports = { schedulingWeather }
